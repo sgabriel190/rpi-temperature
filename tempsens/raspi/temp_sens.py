@@ -19,9 +19,14 @@ def checkTemperature(temperature, humidity, led):
 
 
 # Get the first measures
-humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-print_module.myPrint(humidity, temperature)
+# print_module.myPrint(humidity, temperature)
 
+def getInfo():
+    humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
+    return dict(temp = temperature, hum = humidity, time = str(print_module.time.strftime("%H:%M:%S",print_module.time.localtime())))
+
+
+"""
 # Main loop
 while 1:
     print_module.time.sleep(2)
@@ -35,3 +40,4 @@ while 1:
         checkTemperature(temperature, humidity, led)
     except:
         print("Eroare la citire.")
+"""
