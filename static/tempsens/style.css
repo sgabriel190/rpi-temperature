@@ -1,7 +1,38 @@
 body {
-    background-color: yellow;
+    background-color: #ccc;
+    overflow-x: hidden;
 }
 
 #page_title {
+    text-align: center;
+    font-size: 48px;
+    font-family: 'Signika', sans-serif;
+    color: #ff4411;
+}
+
+footer {
+    position: sticky;
+    width: 100%;
+    float: left;
+    height: 3em;
+    background-color: rgba(255, 99, 71, 0.5);
+    margin-top: 15px;
+    padding: 3px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+main {
+    border-radius: 10px;
+    width: auto;
+    height: auto;
+    background-color: #f1f1f1;
+    padding: 10px;
+    margin: 1px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+
+#local_temperature {
     text-align: center;
 }
