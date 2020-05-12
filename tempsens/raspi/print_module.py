@@ -18,7 +18,7 @@ def myPrint(humidity, temperature):
     
 # Formatted print for html website
 def htmlPrint(humidity, temparature):
-    cdToPath("var/www/html")
+    file_system_module.cdToPath("var/www/html")
     try:
         html_file = open("temp.html", "w")
         html_content= "<h1>Local temperature</h1><p>temperature: %s humidity: %s time: %s</p>" % (temperature, humidity, time.strftime("%H:%M:%S",time.localtime()))

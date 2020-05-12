@@ -1,5 +1,6 @@
 import Adafruit_DHT
 import RPi.GPIO as GPIO
+import print_module
 
 # Pin defining and board mode
 GPIO.setmode(GPIO.BOARD)
@@ -12,18 +13,18 @@ GPIO.setup(led, GPIO.OUT)
 def checkTemperature(temperature, humidity, led):
     if(temperature < 21):
         GPIO.output(led, 0)
-        printToFile(humidity, temperature)
+        print_module.printToFile(humidity, temperature)
     else:
         GPIO.output(led, 1)
 
 
 # Get the first measures
 humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-myPrint(humidity, temperature)
+print_module.myPrint(humidity, temperature)
 
 # Main loop
 while 1:
-    time.sleep(2)
+    print_module.time.sleep(2)
     try:
         new_humidity, new_temperature =  Adafruit_DHT.read_retry(sensor, pin)
         if(new_humidity != humidity or new_temperature != temperature):
