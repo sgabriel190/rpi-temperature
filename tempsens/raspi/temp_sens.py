@@ -1,6 +1,6 @@
 import Adafruit_DHT
 import RPi.GPIO as GPIO
-import print_module
+import time
 
 # Pin defining and board mode
 GPIO.setmode(GPIO.BOARD)
@@ -9,21 +9,23 @@ pin = 4
 led = 13
 GPIO.setup(led, GPIO.OUT)
 
+"""
 # This function checks the threshold temperature and lights up an led
 def checkTemperature(temperature, humidity, led):
     if(temperature < 21):
         GPIO.output(led, 0)
-        print_module.printToFile(humidity, temperature)
+        printToFile(humidity, temperature)
     else:
         GPIO.output(led, 1)
 
 
 # Get the first measures
 # print_module.myPrint(humidity, temperature)
+"""
 
 def getInfo():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
-    return dict(temp = temperature, hum = humidity, time = str(print_module.time.strftime("%H:%M:%S",print_module.time.localtime())))
+    return dict(temp = temperature, hum = humidity, time = str(time.strftime("%H:%M:%S",time.localtime())))
 
 
 """

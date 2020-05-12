@@ -1,5 +1,4 @@
 import time
-import file_system_module
 
 # Defining functions
 def printToFile(humidity, temperature):
