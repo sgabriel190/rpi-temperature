@@ -11,5 +11,5 @@ class Index(View):
         return render(request, self.path, { 
             'temperature': info["temp"],
             'humidity': info["hum"],
-            'time': info["time"],
+            'local_time': info["time"],
          })
