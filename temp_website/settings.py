@@ -26,8 +26,6 @@ SECRET_KEY = 'r7%gt62eyzr9vwnivxp59&vd-qpw_$4#mcr^p_)b@u@-h2*yxa'
 DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.107', 'localhost']
-MY_APP = 'tempsens'
-CSP_SCRIPT_SRC = ("'self'",)
 
 # Application definition
 
