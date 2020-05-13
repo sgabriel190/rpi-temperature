@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['192.168.0.107', 'localhost']
 MY_APP = 'tempsens'
+CSP_SCRIPT_SRC = ("'self'",)
 
 # Application definition
 
