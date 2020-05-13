@@ -3,7 +3,7 @@
 {% load static %}
 <head>
     <meta charset="utf-8" />
-     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local temperature</title>
     <link rel="stylesheet" type="text/css" href="{% static "tempsens/css/style.css" %}">
     <link rel="shortcut icon" type="image/png" href="{% static "tempsens/favicon.ico" %}">
@@ -30,6 +30,9 @@
     <footer>
         <p>&copy;Django web application - Temperature sensor</p>
     </footer>
+    <script>
+        setInterval(getCurrentTime, 1000);
+    </script>
 </body>
 
 </html>
