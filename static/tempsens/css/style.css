@@ -29,10 +29,11 @@ main {
     background-color: #f1f1f1;
     padding: 10px;
     margin: 1px;
-    font-family: 'Raleway', sans-serif;
-    font-size: 18px;
 }
 
-#local_temperature {
+main p {
     text-align: center;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+    margin: 5px;
 }
