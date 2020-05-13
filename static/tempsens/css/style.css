@@ -22,6 +22,10 @@ footer {
     border-radius: 10px;
 }
 
+body>main {
+    text-align: center;
+}
+
 main {
     border-radius: 10px;
     width: 50%;
