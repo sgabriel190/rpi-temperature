@@ -36,6 +36,7 @@ ALLOWED_HOSTS = ['192.168.0.107', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'tempsens.apps.TempsensConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
