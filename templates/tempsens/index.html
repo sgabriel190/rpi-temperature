@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="ro-RO">
-
+{% load static %}
 <head>
     <meta charset="utf-8" />
      <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
     <title>Local temperature</title>
-    {% load static %}
     <link rel="stylesheet" type="text/css" href="{% static "tempsens/css/style.css" %}">
     <link rel="shortcut icon" type="image/png" href="{% static "tempsens/favicon.ico" %}">
-    <script type="text/javascript" src="{% static 'tempsens/js/script.js' %}" ></script>
+    <script src="{% static "tempsens/js/script.js" %}" ></script>
 </head>
 
 <body>
