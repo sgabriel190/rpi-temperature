@@ -12,12 +12,15 @@ class Index(View):
         return render(request, self.path, { 
             'temperature': info["temp"],
             'humidity': info["hum"],
-            'local_time': info["time"],
          })
 
 
 def disable_led(request):
     powerOffLed.delay()
+    return redirect("/tempsens/")
+
+def power_led(request):
+    powerOnLed.delay()
     return redirect("/tempsens/")
 
 def get_data_json(request):

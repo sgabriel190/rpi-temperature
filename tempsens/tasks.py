@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 from celery import shared_task
 import Adafruit_DHT
 import RPi.GPIO as GPIO
-import time
 
 # Pin defining and board mode
 GPIO.setmode(GPIO.BOARD)
@@ -29,9 +28,14 @@ def checkTemperature(temperature, humidity, led):
 def powerOffLed():
     GPIO.output(led, 1)
 
+# this method powers on the led
+@shared_task
+def powerOnLed():
+    GPIO.output(led, 0)
+
 # This method returns a dictionary for the html view with sensor values
 @shared_task
 def getInfo():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     checkTemperature(temperature, humidity, led)
-    return dict(temp = temperature, hum = humidity, time = str(time.strftime("%H:%M:%S",time.localtime())))
+    return dict(temp = temperature, hum = humidity)
