@@ -7,6 +7,7 @@
     <title>Local temperature</title>
     <link rel="stylesheet" type="text/css" href="{% static "tempsens/css/style.css" %}">
     <link rel="shortcut icon" type="image/png" href="{% static "tempsens/favicon.ico" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{% static "tempsens/js/script.js" %}" ></script>
 </head>
 
@@ -26,7 +27,7 @@
             <p id="local_humidity">Humidity:{% if humidity %} {{ humidity }} {% endif %} </p>
             <p id="local_time">Time:{% if local_time %} {{ local_time }} {% endif %}</p>
             <form action="/tempsens/disable_led/" method="get">
-                <input type="submit" value="Button">
+                <input type="submit" value="Disable led">
             </form>
         </article>
     </main>
@@ -36,6 +37,7 @@
     </footer>
     <script>
         setInterval(getCurrentTime, 1000);
+        setInterval(getTemperatureValue, 5000);
     </script>
 </body>
 

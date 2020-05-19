@@ -17,3 +17,9 @@ function getCurrentTime() {
         minutes + ":" +
         seconds;
 }
+
+function getTemperatureValue() {
+    $.get("/tempsens/get_data_json/", (data, status) => {
+        console.log("Data: " + JSON.stringify(data) + " Status: " + status);
+    });
+}
