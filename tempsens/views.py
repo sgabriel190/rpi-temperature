@@ -2,22 +2,20 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.http import JsonResponse
 from django.views.generic import View
-#from .temp_sens import getInfo, powerOffLed
-""", { 
-            'temperature': info["temp"],
-            'humidity': info["hum"],
-            'local_time': info["time"],
-         }
-"""
+from .tasks import *
 
 class Index(View):
     path = "tempsens/index.html"
-
     def get(self, request):
-        #info = getInfo()
-        return render(request, self.path)
+        task_result = getInfo.delay()
+        info = task_result.get()
+        return render(request, self.path, { 
+            'temperature': info["temp"],
+            'humidity': info["hum"],
+            'local_time': info["time"],
+         })
 
 
 def disable_led(request):
-    #powerOffLed()
-    return redirect("")
+    powerOffLed.delay()
+    return redirect("/tempsens/")

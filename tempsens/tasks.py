@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 from celery import shared_task
-"""
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 import time
@@ -11,6 +10,11 @@ sensor = Adafruit_DHT.DHT11
 pin = 4
 led = 13
 GPIO.setup(led, GPIO.OUT)
+
+# Test method
+@shared_task(name="test_task")
+def testTask():
+    return "Test"
 
 # This function checks the threshold temperature and lights up an led
 @shared_task
@@ -31,9 +35,3 @@ def getInfo():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     checkTemperature(temperature, humidity, led)
     return dict(temp = temperature, hum = humidity, time = str(time.strftime("%H:%M:%S",time.localtime())))
- """
-
- # Test method
- @shared_task
- def testTask():
-     return "Test"
