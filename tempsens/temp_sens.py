@@ -1,3 +1,4 @@
+"""
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 import time
@@ -25,3 +26,4 @@ def getInfo():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     checkTemperature(temperature, humidity, led)
     return dict(temp = temperature, hum = humidity, time = str(time.strftime("%H:%M:%S",time.localtime())))
+"""
