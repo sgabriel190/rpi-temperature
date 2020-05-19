@@ -1,0 +1,3 @@
+Watching for file changes with StatReloader
+/home/pi/rpi_temp/tempsens/tasks.py:11: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(led, GPIO.OUT)

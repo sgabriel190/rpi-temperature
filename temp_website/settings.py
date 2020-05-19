@@ -32,7 +32,7 @@ SECRET_KEY = 'r7%gt62eyzr9vwnivxp59&vd-qpw_$4#mcr^p_)b@u@-h2*yxa'
 DEBUG = True
 APPEND_SLASH = False
 
-ALLOWED_HOSTS = ['192.168.0.107', 'localhost']
+ALLOWED_HOSTS = [socket.gethostbyname_ex(socket.gethostname())[-1][-1], '192.168.0.107', 'localhost']
 
 # Celery stuff
 CELERY_BROKER_URL = 'redis://localhost:6379'
