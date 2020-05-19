@@ -18,6 +18,5 @@ from django.urls import include, path
 
 urlpatterns = [
     path('tempsens/', include('tempsens.urls')),    
-    path('disable_led/', include('tempsens.urls')),  
     path('admin/', admin.site.urls),
 ]

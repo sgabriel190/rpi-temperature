@@ -30,10 +30,17 @@ SECRET_KEY = 'r7%gt62eyzr9vwnivxp59&vd-qpw_$4#mcr^p_)b@u@-h2*yxa'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+APPEND_SLASH = False
 
 ALLOWED_HOSTS = ['192.168.0.107', 'localhost']
 
-# Application definition
+# Celery stuff
+CELERY_BROKER_URL = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'Europe/Bucharest'
 
 INSTALLED_APPS = [
     'tempsens.apps.TempsensConfig',

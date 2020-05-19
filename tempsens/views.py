@@ -16,7 +16,7 @@ class Index(View):
             'local_time': info["time"],
          }"""
 
-class DisableLed(View):
-    def post(self, request):
-        #powerOffLed()
-        return redirect("")
+
+def disable_led(request):
+    #powerOffLed()
+    return redirect("")
