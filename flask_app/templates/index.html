@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ro-RO">
+{% load static %}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local temperature</title>
+    <link rel="stylesheet" type="text/css" href="{% static "tempsens/css/style.css" %}">
+    <link rel="shortcut icon" type="image/png" href="{% static "tempsens/favicon.ico" %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="{% static "tempsens/js/script.js" %}" ></script>
+</head>
+
+<body>
+    <header>
+        <p id="page_title">Local temperature</p>
+    </header>
+
+    <nav>
+
+    </nav>
+
+    <main>
+        <article>
+        <p>{{ string }}</p>
+            <p id="local_temperature">Temperature: {% if temperature %} {{ temperature }} {% endif %} </p>
+            <p id="local_humidity">Humidity: {% if humidity %} {{ humidity }} {% endif %} </p>
+            <p id="local_time"></p>
+            <form action="/tempsens/disable_led/" method="get">
+                <input class="button" type="submit" value="Disable led">
+            </form>
+            <form action="/tempsens/power_led/" method="get">
+                <input class="button" type="submit" value="Power led">
+            </form>
+             <button class="button" onclick="getTemperatureValue()">Update data</button> 
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy;Django web application - Temperature sensor</p>
+    </footer>
+    <script>
+        getCurrentTime();
+        setInterval(getCurrentTime, 1000);
+    </script>
+</body>
+
+</html>

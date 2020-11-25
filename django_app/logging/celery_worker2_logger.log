@@ -1,69 +1,13 @@
-[2020-11-17 18:05:54,424: INFO/MainProcess] Connected to redis://localhost:6379//
-[2020-11-17 18:05:55,015: INFO/MainProcess] mingle: searching for neighbors
-[2020-11-17 18:05:57,452: INFO/MainProcess] mingle: all alone
-[2020-11-17 18:05:58,226: WARNING/MainProcess] /usr/local/lib/python3.7/dist-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
+/home/pi/rpi_temp/django_app/tempsens/tasks.py:11: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(led, GPIO.OUT)
+[2020-11-25 17:03:01,673: INFO/MainProcess] Connected to redis://localhost:6379//
+[2020-11-25 17:03:03,115: INFO/MainProcess] mingle: searching for neighbors
+[2020-11-25 17:03:08,410: INFO/MainProcess] mingle: all alone
+[2020-11-25 17:03:10,465: WARNING/MainProcess] /usr/local/lib/python3.7/dist-packages/celery/fixups/django.py:203: UserWarning: Using settings.DEBUG leads to a memory
             leak, never use this setting in production environments!
   leak, never use this setting in production environments!''')
-[2020-11-17 18:05:58,244: INFO/MainProcess] celery@worker2 ready.
-[2020-11-17 18:06:10,443: INFO/MainProcess] Received task: tempsens.tasks.getInfo[606aa21c-8797-452d-83eb-9148c3d2d49c]  
-[2020-11-17 18:06:13,766: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[606aa21c-8797-452d-83eb-9148c3d2d49c] succeeded in 3.2272559289999947s: {'temp': 23.0, 'hum': 62.0}
-[2020-11-17 18:06:25,224: INFO/MainProcess] Received task: tempsens.tasks.getInfo[f4c649c8-29a7-44bf-9bd0-a04c865ac9d4]  
-[2020-11-17 18:06:25,813: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[f4c649c8-29a7-44bf-9bd0-a04c865ac9d4] succeeded in 0.5681710849999888s: {'temp': 23.0, 'hum': 61.0}
-[2020-11-17 18:06:28,034: INFO/MainProcess] Received task: tempsens.tasks.getInfo[d127bcb0-12c6-40dd-98e2-ed1826be2147]  
-[2020-11-17 18:06:31,148: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[d127bcb0-12c6-40dd-98e2-ed1826be2147] succeeded in 3.0800238589999935s: {'temp': 23.0, 'hum': 62.0}
-[2020-11-17 18:06:32,631: INFO/MainProcess] Received task: tempsens.tasks.powerOnLed[f9303e37-19b8-42d3-b1d7-8e26e774fe88]  
-[2020-11-17 18:06:32,697: INFO/ForkPoolWorker-1] Task tempsens.tasks.powerOnLed[f9303e37-19b8-42d3-b1d7-8e26e774fe88] succeeded in 0.037673785999999154s: None
-[2020-11-17 18:06:39,814: INFO/MainProcess] Received task: tempsens.tasks.getInfo[1b06cda2-8054-4416-a971-11d10b9c8887]  
-[2020-11-17 18:06:40,411: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[1b06cda2-8054-4416-a971-11d10b9c8887] succeeded in 0.5707078300000035s: {'temp': 23.0, 'hum': 61.0}
-[2020-11-17 18:07:07,454: INFO/MainProcess] Received task: tempsens.tasks.getInfo[c965d6e0-18e8-40cb-a4fd-ca6e3d8e9c31]  
-[2020-11-17 18:07:08,044: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[c965d6e0-18e8-40cb-a4fd-ca6e3d8e9c31] succeeded in 0.5667935110000144s: {'temp': 23.0, 'hum': 61.0}
-[2020-11-17 18:07:15,847: INFO/MainProcess] Received task: tempsens.tasks.getInfo[168f620f-5b57-4cd3-b40a-c2d02dde7399]  
-[2020-11-17 18:07:21,471: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[168f620f-5b57-4cd3-b40a-c2d02dde7399] succeeded in 5.605446423999979s: {'temp': 23.0, 'hum': 61.0}
-[2020-11-20 14:59:10,196: INFO/MainProcess] Received task: tempsens.tasks.getInfo[6a5902c0-2099-4e90-9c87-7464de5ddcf7]  
-[2020-11-20 14:59:10,765: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[6a5902c0-2099-4e90-9c87-7464de5ddcf7] succeeded in 0.5567053710110486s: {'temp': 23.0, 'hum': 61.0}
-[2020-11-21 13:54:16,715: INFO/MainProcess] Received task: tempsens.tasks.getInfo[681efb29-e4fa-4aff-90da-c48bc415c0cc]  
-[2020-11-21 13:54:17,300: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[681efb29-e4fa-4aff-90da-c48bc415c0cc] succeeded in 0.566543115011882s: {'temp': 23.0, 'hum': 63.0}
-[2020-11-23 19:48:31,438: INFO/MainProcess] Received task: tempsens.tasks.getInfo[fe11db4c-6c9c-43c9-82e4-b9f5013e6602]  
-[2020-11-23 19:48:36,049: INFO/MainProcess] Received task: tempsens.tasks.powerOnLed[c2a9f0fd-1217-4993-9bba-069767301d2b]  
-[2020-11-23 19:48:57,698: INFO/MainProcess] Received task: tempsens.tasks.getInfo[a578aad5-b5b0-4bfc-9cb5-27df9e58ee08]  
-[2020-11-23 19:49:09,433: ERROR/ForkPoolWorker-1] Task tempsens.tasks.getInfo[fe11db4c-6c9c-43c9-82e4-b9f5013e6602] raised unexpected: TypeError("'<' not supported between instances of 'NoneType' and 'int'")
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/trace.py", line 385, in trace_task
-    R = retval = fun(*args, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/trace.py", line 650, in __protected_call__
-    return self.run(*args, **kwargs)
-  File "/home/pi/rpi_temp/tempsens/tasks.py", line 40, in getInfo
-    checkTemperature(temperature, humidity, led)
-  File "/usr/local/lib/python3.7/dist-packages/celery/local.py", line 191, in __call__
-    return self._get_current_object()(*a, **kw)
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/trace.py", line 651, in __protected_call__
-    return orig(self, *args, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/task.py", line 392, in __call__
-    return self.run(*args, **kwargs)
-  File "/home/pi/rpi_temp/tempsens/tasks.py", line 21, in checkTemperature
-    if(temperature < 21):
-TypeError: '<' not supported between instances of 'NoneType' and 'int'
-[2020-11-23 19:49:09,512: INFO/ForkPoolWorker-1] Task tempsens.tasks.powerOnLed[c2a9f0fd-1217-4993-9bba-069767301d2b] succeeded in 0.030128817074000835s: None
-[2020-11-23 19:49:47,491: ERROR/ForkPoolWorker-1] Task tempsens.tasks.getInfo[a578aad5-b5b0-4bfc-9cb5-27df9e58ee08] raised unexpected: TypeError("'<' not supported between instances of 'NoneType' and 'int'")
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/trace.py", line 385, in trace_task
-    R = retval = fun(*args, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/trace.py", line 650, in __protected_call__
-    return self.run(*args, **kwargs)
-  File "/home/pi/rpi_temp/tempsens/tasks.py", line 40, in getInfo
-    checkTemperature(temperature, humidity, led)
-  File "/usr/local/lib/python3.7/dist-packages/celery/local.py", line 191, in __call__
-    return self._get_current_object()(*a, **kw)
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/trace.py", line 651, in __protected_call__
-    return orig(self, *args, **kwargs)
-  File "/usr/local/lib/python3.7/dist-packages/celery/app/task.py", line 392, in __call__
-    return self.run(*args, **kwargs)
-  File "/home/pi/rpi_temp/tempsens/tasks.py", line 21, in checkTemperature
-    if(temperature < 21):
-TypeError: '<' not supported between instances of 'NoneType' and 'int'
-[2020-11-23 19:52:23,563: INFO/MainProcess] Received task: tempsens.tasks.getInfo[351eeff9-e72c-4386-87c2-a91c8f294084]  
-[2020-11-23 19:52:24,142: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[351eeff9-e72c-4386-87c2-a91c8f294084] succeeded in 0.5588003459852189s: {'temp': 23.0, 'hum': 44.0}
-Error: 
-Unable to load celery application.
-The module temp_website was not found.
-
+[2020-11-25 17:03:10,467: INFO/MainProcess] celery@worker2 ready.
+[2020-11-25 17:06:21,022: INFO/MainProcess] Received task: tempsens.tasks.getInfo[43b4474d-1481-4fea-8a28-6ebf02950513]  
+/home/pi/rpi_temp/django_app/tempsens/tasks.py:11: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(led, GPIO.OUT)
+[2020-11-25 17:06:21,863: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[43b4474d-1481-4fea-8a28-6ebf02950513] succeeded in 0.6787151620000031s: {'temp': 25.0, 'hum': 55.0}
