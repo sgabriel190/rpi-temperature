@@ -13,6 +13,8 @@ For client-side, the layout is based on static files(css, images, and javascript
 
 The javascript used on the HTTP client contains 2 functions. One of those updates the time based on the local machine time. The second function uses jQuery to update the page DOM asynchronous with data from the server.
 
+### This project contains a Flask version.
+
 ## Getting Started
 
 ### Setup the breadboard and I/O pins
