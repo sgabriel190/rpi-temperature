@@ -69,3 +69,9 @@ TypeError: '<' not supported between instances of 'NoneType' and 'int'
 [2020-11-23 19:52:27,642: INFO/ForkPoolWorker-1] Task tempsens.tasks.powerOnLed[d8b9aeeb-ddbf-4ea8-8337-0de35f8e1c00] succeeded in 0.030202801921404898s: None
 [2020-11-23 19:52:27,966: INFO/MainProcess] Received task: tempsens.tasks.getInfo[79a8bb56-bb41-4158-95cd-1546fc0e3bf8]  
 [2020-11-23 19:52:31,074: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[79a8bb56-bb41-4158-95cd-1546fc0e3bf8] succeeded in 3.0820288159884512s: {'temp': 23.0, 'hum': 45.0}
+[2020-11-25 16:53:23,369: INFO/MainProcess] Received task: tempsens.tasks.getInfo[f3021b45-e526-4273-976b-4865b077496c]  
+[2020-11-25 16:53:41,837: INFO/ForkPoolWorker-1] Task tempsens.tasks.getInfo[f3021b45-e526-4273-976b-4865b077496c] succeeded in 18.424000464961864s: {'temp': 25.0, 'hum': 55.0}
+Error: 
+Unable to load celery application.
+The module temp_website was not found.
+
