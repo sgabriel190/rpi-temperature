@@ -30,5 +30,10 @@ def get_data_json():
     return jsonify(), 201
 
 
+@app.errorhandler(Exception)
+def exception_handler(err):
+    return {"message": str(err)}, 500
+
+
 if __name__ == "__main__":
     app.run(host="192.168.0.107", port="80")
