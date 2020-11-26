@@ -1,0 +1,13 @@
+ * Serving Flask app "main" (lazy loading)
+ * Environment: production
+   WARNING: Do not use the development server in a production environment.
+   Use a production WSGI server instead.
+ * Debug mode: off
+/home/pi/rpi_temp/flask_app/rpi/rpi_setup.py:10: RuntimeWarning: This channel is already in use, continuing anyway.  Use GPIO.setwarnings(False) to disable warnings.
+  GPIO.setup(led, GPIO.OUT)
+ * Running on http://192.168.0.107:80/ (Press CTRL+C to quit)
+192.168.0.129 - - [26/Nov/2020 18:46:14] "GET /tempsens HTTP/1.1" 200 -
+192.168.0.129 - - [26/Nov/2020 18:46:14] "GET /static/js/script.js HTTP/1.1" 200 -
+192.168.0.129 - - [26/Nov/2020 18:46:14] "GET /static/css/style.css HTTP/1.1" 200 -
+192.168.0.129 - - [26/Nov/2020 18:46:15] "GET /static/favicon.ico HTTP/1.1" 200 -
+192.168.0.129 - - [26/Nov/2020 18:46:20] "POST /tempsens/power_led HTTP/1.1" 201 -

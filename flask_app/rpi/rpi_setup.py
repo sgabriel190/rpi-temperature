@@ -32,4 +32,4 @@ def powerOnLed():
 def getInfo():
     humidity, temperature = Adafruit_DHT.read_retry(sensor, pin)
     checkTemperature(temperature)
-    return dict(temp=temperature, hum=humidity)
+    return dict(temperature=temperature, humidity=humidity)

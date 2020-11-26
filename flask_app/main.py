@@ -19,13 +19,13 @@ def get_data_json():
 
 
 @app.route('/tempsens/power_led', methods=["POST"])
-def get_data_json():
+def power_led():
     powerOnLed()
     return jsonify(), 201
 
 
 @app.route('/tempsens/disable_led', methods=["POST"])
-def get_data_json():
+def disable_led():
     powerOffLed()
     return jsonify(), 201
 
