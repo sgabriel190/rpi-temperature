@@ -24,13 +24,9 @@
             <p id="local_temperature">Temperature: {{ temperature }}</p>
             <p id="local_humidity">Humidity: {{ humidity }}</p>
             <p id="local_time"></p>
-            <form action="/tempsens/disable_led" method="post">
-                <input class="button" type="submit" value="Disable led">
-            </form>
-            <form action="/tempsens/power_led" method="post">
-                <input class="button" type="submit" value="Power led">
-            </form>
-             <button class="button" onclick="getTemperatureValue()">Update data</button> 
+            <button class="button" onclick="powerLedOff()">Disable led</button>
+            <button class="button" onclick="powerLedOn()">Power led</button>
+            <button class="button" onclick="getTemperatureValue()">Update data</button>
         </article>
     </main>
 
