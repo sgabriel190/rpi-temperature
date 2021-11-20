@@ -97,6 +97,22 @@ Returns 127.0.0.1 on machines having the hostname in `/etc/hosts` as 127.0.0.1.
 
 Browse to `/temp_website/settings.py` and add your IPv4 address to the `ALLOWED_HOSTS` list.
 
+#### Run the application with the script.sh in background
+
+In the app folder there are one line scripts to help you run the application in the background. To stop it you need to search for the PID and terminate it from CLI.
+
+#### Setting the IP:PORT for the Flask app
+
+The Flask server uses environment variables in order to set the **IP:PORT** for the socket. Please set the DHT\_IP and DHT\_PORT variables before running the app.
+
+Set the env var in the root **.bashrc** file
+```
+	echo >> /root/.bashrc < EOF
+	export DHT_IP=x.x.x.x
+	export DHT_PORT=xxxx
+	EOF
+```
+
 ## Change I/O pins settings
 
 All the Raspberry Pi settings and functionalities are included into the `/tempsens/tasks.py` script.
@@ -130,6 +146,21 @@ As some of you want to change the temperature threshold, it is possible. The val
 ```
 
 The function takes a decision based on the temperature and if it's below 21 then the led lights up. The led turns off otherwise.
+
+## Docker encapsulation to Flask project
+
+The Flask project can now use Docker to build and run a container. First installing Docker engine on your machine is **required**. Please follow any tutorial on the web to install it successfully.
+
+The Docker image needs to be build and then ran with the following commands:
+```
+	cd to/flask/project/path
+	docker build container-name:1.0.0 .
+	docker run -d -p 80:80 --name=container-name --privileged -v /path/to/local/machine/logs/:/app/logger/ -e DHT_IP=0.0.0.0 -e DHT_PORT=80 container-name:1.0.0
+```
+
+Having those commands in mind you can name the image and container anything. Also the application uses environment variables to set the IP:HOST of the socket listening to requests.
+
+The log file is stored on the local machine using Docker volumes.
 
 ## Acknowledged problems
 
