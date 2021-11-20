@@ -1,5 +1,5 @@
 from flask import Flask, render_template, jsonify
-
+import os
 from rpi.rpi_setup import getInfo, powerOnLed, powerOffLed, checkTemperature
 
 app = Flask(__name__)
@@ -36,4 +36,4 @@ def exception_handler(err):
 
 
 if __name__ == "__main__":
-    app.run(host="192.168.0.107", port="80")
+    app.run(host=os.environ["DHT_IP"], port=os.environ["DHT_PORT"])

@@ -1,4 +1,3 @@
-from __future__ import absolute_import, unicode_literals
 import Adafruit_DHT
 import RPi.GPIO as GPIO
 
