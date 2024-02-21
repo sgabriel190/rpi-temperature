@@ -15,7 +15,7 @@ LOG = logging.getLogger(__name__)
 app = Flask(__name__)
 
 
-@app.route("/tempsens", methods=["GET"])
+@app.route("/sensor_info", methods=["GET"])
 def tempsens_page():
     data: SensorInfo = get_sensor_info()
     return (

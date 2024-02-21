@@ -1,6 +1,6 @@
 import logging
-from libs import sensor
 from libs.models import SensorInfo
+from libs import sensor
 
 logging.basicConfig(
     format="[%(asctime)s][%(filename)s][%(levelname)8s] - %(message)s",

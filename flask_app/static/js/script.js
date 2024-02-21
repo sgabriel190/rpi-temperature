@@ -24,13 +24,3 @@ function getTemperatureValue() {
         document.getElementById("local_humidity").innerHTML = "Humidity: " + data.humidity.toFixed(1);
     });
 }
-
-function powerLedOn() {
-    $.post("/tempsens/power_led", () => {
-    });
-}
-
-function powerLedOff() {
-    $.post("/tempsens/disable_led", () => {
-    });
-}
