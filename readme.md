@@ -1,21 +1,35 @@
 # Temperature sensor with led warning project
 
 ## Description
-This application runs on a Raspberry Pi Zero W and a breadboard. The sensor data is displayed on a website powered by Django and Celery.
+This application runs on a Raspberry Pi Zero W and a breadboard. The sensor data is displayed on a website.
 
 This project can be ported to other Raspberry Pi machines with more hardware resources if needed. 
 
-The django framework helps in creating a quick web server. As described by the developer himself, celery is a distributed task queue, which helps the server-side tasks to be asynchronous, while boosting its response time.
+Currently the project includes a __Django__ and __Flask__ version. The Flask version is lighter than Django and it also does not include the LED. 
 
-Each time the web client accesses the application, it updates the data and I find it useful to have control over the LED.
-
-For client-side, the layout is based on static files(css, images, and javascript) and a template html file. Those files can be found and modified in `/templates/tempsens/` for templates and `/static/tempsens/` for static files.
-
-The javascript used on the HTTP client contains 2 functions. One of those updates the time based on the local machine time. The second function uses jQuery to update the page DOM asynchronous with data from the server.
-
-### This project contains a Flask version.
+Each implementation includes a README file to go through implementation details and setup how-to.
 
 ## Getting Started
+
+### Prerequisites
+
+Installing the project to a bare metal machine, in this case raspberry pi, requires some environment check.
+
+First, you need to make sure the machine is updated. Run the following commands in the terminal to update the machine:
+```
+    $ sudo apt-get update
+    $ sudo apt-get upgrade
+```
+
+Check if you have python3 installed by running in command line:
+```
+    $ python3 --version
+```
+
+If not found, install python 3 with the following command:
+```
+    $ sudo apt-get install python3
+```
 
 ### Setup the breadboard and I/O pins
 
@@ -29,138 +43,58 @@ The setup for this project is simple. As it is displayed above, the electronic p
 - 4 male/female wires 
 - 4 male/male wires for breadboard connection.
 
-### Installing
+## Web application description
 
-The language used in this project is python3. The raspberry pi machine requires Django and Celery installed.
+For client-side, the layout is based on static files(css, images, and javascript) and a template html file.
 
-First, you need to make sure the machine is updated. Run the following commands in the terminal to update the machine:
-```
-    $ sudo apt-get update
-    $ sudo apt-get upgrade
-```
+The javascript used on the HTTP client contains 2 functions. One of those updates the time based on the local machine time. The second function uses jQuery to update the page DOM asynchronous with data from the server.
 
-Check if you have python3 installed by running in command line:
-```
-    $ python3
-    >>>quit()
-```
+## Add the script to systemctl 
 
-This command should run the python3 interpreter, if it exists, then the `quit()` method exits it.
+Since systemctl runs on every Raspbian OS, it can take care of starting the DHT project each time the OS encounters an event.
 
-If not found, install python 3 with the following command:
-```
-    $ sudo apt-get install python3
-```
+Follow these steps to get the dht service running through systemctl:
 
-The temperature sensor requires a module for picking up the temperature in the environment.
-```
-    $ sudo pip3 install Adafruit_DHT
-```
+- Create an application folder. __E.g__: create a dht_app folder at root level with all application content
 
-With those installed, proceed to install django and celery:
-```
-    $ sudo pip3 install django
-    $ sudo pip3 install celery
-```
+- Create a service file which declares the new systemctl service
 
-I recommend installing those with sudo privileges, because we need sudo for running the website on HTTP port 80. Rebooting the machine is an option here, but it is not usually necessary.
-
-The celery framework needs a message broker: redis or rabbitMQ are one of those.
-
-Installing redis:
-```
-    $ sudo apt-get install redis
-    $ sudo pip3 install redis
-```
-
-### Running the application
-
-After the packages are installed, the celery worker is ready to run. Enter the app folder and execute:
-```
-    $ sudo celery -A temp_website worker -l info -n worker
-```
-It is possible to have more than one worker on the machine. Run the previous command with a different name for the “-n” argument. The workers will automatically synchronize. 
-
-Run the django project from the app folder with:
-```
-    $ sudo python3 manage.py runserver ip:80
-```
-
-The ip bit in the command should be the local IPv4 of the machine you are running this app on. If it is hard to find out your local network IPv4 run these commands:
-```
-    $ python3
-    >>>import socket
-    >>>socket.gethostbyname_ex(socket.gethostname())[-1][-1]
-```
-Returns 127.0.0.1 on machines having the hostname in `/etc/hosts` as 127.0.0.1.
-
-
-Browse to `/temp_website/settings.py` and add your IPv4 address to the `ALLOWED_HOSTS` list.
-
-#### Run the application with the script.sh in background
-
-In the app folder there are one line scripts to help you run the application in the background. To stop it you need to search for the PID and terminate it from CLI.
-
-#### Setting the IP:PORT for the Flask app
-
-The Flask server uses environment variables in order to set the **IP:PORT** for the socket. Please set the DHT\_IP and DHT\_PORT variables before running the app.
-
-Set the env var in the root **.bashrc** file
-```
-	echo >> /root/.bashrc < EOF
-	export DHT_IP=x.x.x.x
-	export DHT_PORT=xxxx
-	EOF
-```
-
-## Change I/O pins settings
-
-All the Raspberry Pi settings and functionalities are included into the `/tempsens/tasks.py` script.
+This is suggested to be created next to the other systemctl services(`/etc/systemd/system/`):
 
 ```
-	import Adafruit_DHT
-	import RPi.GPIO as GPIO
+[Unit]
+# Add a description for the new service.
+Description=<description_text>
 
-	# Pin defining and board mode
-	GPIO.setmode(GPIO.BOARD)
-	sensor = Adafruit_DHT.DHT11
-	pin = 4
-	led = 13
-	GPIO.setup(led, GPIO.OUT)
+[Service]
+User=root
+# Use the application folder created at the first step.
+WorkingDirectory=</app/directory>
+# The paths will be relative to the WorkingDirectory set previously.
+ExecStart=python3 <path/to/script.py>
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
 ```
 
-This code part sets up all the Raspberry Pi ports for the application.
-
-## Changing the temperature threshold
-
-As some of you want to change the temperature threshold, it is possible. The value is hardcoded into one of the Celery tasks. Go to `/tempsens/tasks.py` and edit the following task:
+- Reload the systemctl daemon
 
 ```
-	# This function checks the threshold temperature and lights up an led
-	@shared_task
-	def checkTemperature(temperature, humidity, led):
-		if(temperature < 21):
-			GPIO.output(led, 0)
-		else:
-			GPIO.output(led, 1)
+	$ sudo systemctl daemon-reload
 ```
 
-The function takes a decision based on the temperature and if it's below 21 then the led lights up. The led turns off otherwise.
+- Enable the service. The service name should be the filename created in the systemctl services
 
-## Docker encapsulation to Flask project
-
-The Flask project can now use Docker to build and run a container. First installing Docker engine on your machine is **required**. Please follow any tutorial on the web to install it successfully.
-
-The Docker image needs to be build and then ran with the following commands:
 ```
-	cd to/flask/project/path
-	docker build container-name:1.0.0 .
-	docker run -d -p 80:80 --name=container-name --privileged -v /path/to/local/machine/logs/:/app/logger/ -e DHT_IP=0.0.0.0 -e DHT_PORT=80 container-name:1.0.0
+	$ sudo systemctl enable service-name.service
 ```
 
-Having those commands in mind you can name the image and container anything. Also the application uses environment variables to set the IP:HOST of the socket listening to requests.
+- Start the service.
 
-The log file is stored on the local machine using Docker volumes.
+```
+	$ sudo systemctl start service-name.service
+```
 
 ## Acknowledged problems
 
@@ -169,9 +103,3 @@ The log file is stored on the local machine using Docker volumes.
 - Using the multiprocessing tool on a single threaded computer doesn't bring the best result.
 
 - The sensor is a cheap version and even if it displays precision of one(one decimal digit), the measure isn't precise.
-
-## Resources and references
-
-[Django documentation](https://towardsdatascience.com/image-panorama-stitching-with-opencv-2402bde6b46c)
-
-[Celery documentation](https://docs.celeryproject.org/en/stable/)
