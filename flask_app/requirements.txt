@@ -1,2 +1,3 @@
-Flask
-Adafruit_DHT
+Flask==3.0.2
+adafruit-circuitpython-dht==4.0.4
+Adafruit-Blinka==8.32.0
