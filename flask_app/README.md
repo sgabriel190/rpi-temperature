@@ -20,8 +20,8 @@ The Flask server uses environment variables in order to set the **IP:PORT** for 
 
 Set the environment variables as such:
 ```
-	export DHT_IP=x.x.x.x
-	export DHT_PORT=xxxx
+export DHT_IP=x.x.x.x
+export DHT_PORT=xxxx
 ```
 
 ## Docker encapsulation
@@ -30,9 +30,9 @@ The Flask project can now use Docker to build and run a container. First install
 
 The Docker image needs to be build and then ran with the following commands:
 ```
-	cd to/flask/project/path
-	docker build container-name:1.0.0 .
-	docker run -d -p 80:80 --name=container-name --privileged -v /path/to/local/machine/logs/:/app/logger/ -e DHT_IP=0.0.0.0 -e DHT_PORT=80 container-name:1.0.0
+cd to/flask/project/path
+docker build container-name:1.0.0 .
+docker run -d -p 80:80 --name=container-name --privileged -v /path/to/local/machine/logs/:/app/logger/ -e DHT_IP=0.0.0.0 -e DHT_PORT=80 container-name:1.0.0
 ```
 
 Having those commands in mind you can name the image and container anything. Also the application uses environment variables to set the IP:HOST of the socket listening to requests.

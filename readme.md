@@ -17,18 +17,18 @@ Installing the project to a bare metal machine, in this case raspberry pi, requi
 
 First, you need to make sure the machine is updated. Run the following commands in the terminal to update the machine:
 ```
-    $ sudo apt-get update
-    $ sudo apt-get upgrade
+$ sudo apt-get update
+$ sudo apt-get upgrade
 ```
 
 Check if you have python3 installed by running in command line:
 ```
-    $ python3 --version
+$ python3 --version
 ```
 
 If not found, install python 3 with the following command:
 ```
-    $ sudo apt-get install python3
+$ sudo apt-get install python3
 ```
 
 ### Setup the breadboard and I/O pins
@@ -81,19 +81,19 @@ WantedBy=multi-user.target
 - Reload the systemctl daemon
 
 ```
-	$ sudo systemctl daemon-reload
+$ sudo systemctl daemon-reload
 ```
 
 - Enable the service. The service name should be the filename created in the systemctl services
 
 ```
-	$ sudo systemctl enable service-name.service
+$ sudo systemctl enable service-name.service
 ```
 
 - Start the service.
 
 ```
-	$ sudo systemctl start service-name.service
+$ sudo systemctl start service-name.service
 ```
 
 ## Acknowledged problems
