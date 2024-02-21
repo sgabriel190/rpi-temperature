@@ -9,7 +9,22 @@ logging.basicConfig(
 
 LOG = logging.getLogger(__name__)
 
+def retry(max_retries):
+    def decorator(func):
+        def wrapper(*args, **kwargs):
+            retries = 0
+            if retries < max_retries:
+                try:
+                    result = func(*args, **kwargs)
+                    return result
+                except Exception as _:
+                    retries += 1
+            else:
+              raise Exception(f"Max retries of function {func} exceeded")
+        return wrapper
+    return decorator
 
+@retry(max_retries=5)
 def get_sensor_info() -> SensorInfo:
     """
     Retrieve the DHT sensor values: temperature and humidity.
