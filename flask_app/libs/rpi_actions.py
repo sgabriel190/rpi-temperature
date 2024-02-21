@@ -20,4 +20,4 @@ def get_sensor_info() -> SensorInfo:
     LOG.info("Getting the sensor values.")
     data = SensorInfo(temperature=sensor.temperature, humidity=sensor.humidity)
     LOG.info("Temperature:%s Humidity:%s", data.temperature, data.humidity)
-    return SensorInfo(temperature=sensor.temperature, humidity=sensor.humidity)
+    return data
