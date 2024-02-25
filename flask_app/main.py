@@ -1,7 +1,6 @@
 import logging
 from dataclasses import asdict
 from flask import Flask, render_template
-from libs import HOST, PORT
 from libs.rpi_actions import get_sensor_info
 from libs.models import SensorInfo
 
@@ -42,7 +41,7 @@ def main() -> None:
     """
     Entry method for the application.
     """
-    app.run(host=HOST, port=PORT)
+    app.run()
 
 
 if __name__ == "__main__":
