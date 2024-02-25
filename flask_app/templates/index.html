@@ -19,7 +19,7 @@
             <p id="local_temperature">Temperature: {{ temperature }}</p>
             <p id="local_humidity">Humidity: {{ humidity }}</p>
             <p id="local_time"></p>
-            <button class="button" onclick="getTemperatureValue()">Update data</button>
+            <p id="sensor_status"></p>
         </article>
     </main>
 
@@ -27,8 +27,9 @@
         <p>&copy;Flask web application - Temperature sensor</p>
     </footer>
     <script>
-        getCurrentTime();
-        setInterval(getCurrentTime, 1000);
+        updateTime();
+        setInterval(updateTime, 1000);
+        setInterval(getTemperatureValue, 5000);
     </script>
 </body>
 
