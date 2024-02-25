@@ -33,6 +33,9 @@ def get_sensor_info() -> SensorInfo:
         SensorInfo: Dataclass which contains temperature and humidity key/value.
     """
     LOG.info("Getting the sensor values.")
-    data = SensorInfo(temperature=sensor.temperature, humidity=sensor.humidity)
+    data = SensorInfo(
+        temperature=round(float(sensor.temperature), 1),
+        humidity=round(float(sensor.humidity), 1)
+    )
     LOG.info("Temperature:%s Humidity:%s", data.temperature, data.humidity)
     return data
